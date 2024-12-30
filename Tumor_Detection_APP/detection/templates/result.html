@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+</head>
+<body>
+    <h1>Prediction Result</h1>
+    <p><strong>Prediction:</strong> {{ mri_image.prediction }}</p>
+    <p><strong>Confidence:</strong> {{ mri_image.confidence|floatformat:2 }}%</p>
+    <img src="{{ mri_image.image.url }}" alt="Uploaded MRI Image" style="max-width: 400px;">
+    <a href="/">Upload Another Image</a>
+</body>
+</html>
