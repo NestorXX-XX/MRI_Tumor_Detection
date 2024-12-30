@@ -3,3 +3,5 @@
 
 # Ignore the env folder (if applicable)
 myenv/
+
+.gitignore
