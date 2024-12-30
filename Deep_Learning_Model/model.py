@@ -430,7 +430,7 @@ plt.legend()
 plt.show()
 
 
-# In[1611]:
+# In[1616]:
 
 
 def get_prediction(path):
@@ -441,7 +441,9 @@ def get_prediction(path):
     input_arr = input_arr / 255.0
 
     # Predict with the model
-    pred = np.argmax(model.predict(input_arr))
+    prob = model.predict(input_arr)[0][0]  # extract scalar float
+    # If prob >= 0.5 => class 1 (tumor), else class 0 (healthy)
+    pred = 1 if prob >= 0.5 else 0
     return pred
 
 def predict_img(path):
@@ -460,7 +462,7 @@ def predict_img(path):
     plt.show()
 
 
-# In[1613]:
+# In[1617]:
 
 
 import os
@@ -495,7 +497,7 @@ def evaluate_folder(folder, type):
     print(f"Success percentage: {success_percentage:.2f}%")
 
 
-# In[1614]:
+# In[1618]:
 
 
 # Go through the yes folder and check
@@ -504,7 +506,7 @@ yes_folder = "brain-tumor-mri-dataset/Brain_Tumor_Detection/yes"
 evaluate_folder(yes_folder, "yes")
 
 
-# In[1615]:
+# In[1619]:
 
 
 # Go through the no folder and check

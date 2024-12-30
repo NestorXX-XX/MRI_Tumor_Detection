@@ -1,0 +1,15 @@
+Model Information
+=================
+Saved on: 2024-12-30 10:43:40.595858
+Test Accuracy: 93.86%
+Test Loss: 0.5316
+
+Additional notes here...
+Check on yes folder
+  -Total images in 'yes' folder: 326
+  -Correctly predicted as TUMOR: 249
+  -Success percentage: 76.38%
+Check on no folder
+  -Total images in 'no' folder: 326
+  -Correctly predicted as HEALTHY: 310
+  -Success percentage: 95.09%
