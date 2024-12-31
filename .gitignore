@@ -7,3 +7,5 @@ myenv/
 Deep_Learning_Model/dataset_check/
 
 Deep_Learning_Model/split_dataset
+
+Deep_Learning_Model/brain-tumor-mri-dataset
