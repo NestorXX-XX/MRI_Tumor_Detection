@@ -4,4 +4,4 @@
 # Ignore the env folder (if applicable)
 myenv/
 
-.gitignore
+Deep_Learning_Model/dataset_check/
