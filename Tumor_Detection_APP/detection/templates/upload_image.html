@@ -1,14 +1,19 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Upload MRI Image</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Upload MRI Image</h1>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload</button>
-    </form>
+    <div class="container">
+        <h1>Upload MRI Image</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload</button>
+        </form>
+    </div>
 </body>
 </html>
