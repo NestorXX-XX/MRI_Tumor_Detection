@@ -18,8 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import login_required
+from detection.views import upload_image
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('detection.urls')),  # Include app URLs
+    path('', login_required(upload_image), name='home'),  # Set upload_image as home page
+    path('detection/', include('detection.urls')),  # Include app URLs
+    path('users/', include('users.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

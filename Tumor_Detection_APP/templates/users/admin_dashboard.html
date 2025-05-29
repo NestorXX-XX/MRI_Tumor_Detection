@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard - MRI Tumor Detection{% endblock %}
+
+{% block content %}
+<div class='row'>
+    <div class='col-12'>
+        <h2>Admin Dashboard</h2>
+        <div class='card mt-4'>
+            <div class='card-header'>
+                <h3>User Management</h3>
+            </div>
+            <div class='card-body'>
+                <div class='table-responsive'>
+                    <table class='table table-striped'>
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Admin Status</th>
+                                <th>Date Joined</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user_profile in users %}
+                            <tr>
+                                <td>{{ user_profile.user.username }}</td>
+                                <td>{{ user_profile.user.email }}</td>
+                                <td>
+                                    {% if user_profile.is_admin %}
+                                        <span class='badge bg-success'>Admin</span>
+                                    {% else %}
+                                        <span class='badge bg-secondary'>User</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ user_profile.user.date_joined|date:'Y-m-d H:i' }}</td>
+                                <td>
+                                    <a href='#' class='btn btn-sm btn-primary'>Edit</a>
+                                    <a href='#' class='btn btn-sm btn-danger'>Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

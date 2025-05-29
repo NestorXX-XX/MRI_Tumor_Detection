@@ -1,28 +1,74 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Prediction Result</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <div class="container">
-        <h1>Prediction Result</h1>
-        <p><strong>Prediction:</strong> {{ mri_image.prediction }}</p>
-        {% if uncertain %}
-            <p><strong>Uncertainty Level:</strong> {{ uncertainty_message }}</p>
-            <p><strong>Probability:</strong> {{ probability }}%</p>
-        {% endif %}
-        <h2>Input MRI Image</h2>
-        <img src="{{ result_image }}" alt="Input MRI Image">
 
-        <div class="model-info">
-            <p><strong>Overall Average Success Percentage:</strong> 95.36%</p>
+{% block title %}Prediction Result - MRI Tumor Detection{% endblock %}
+
+{% block content %}
+<div class='row justify-content-center'>
+    <div class='col-md-10'>
+        <div class='card'>
+            <div class='card-header bg-primary text-white'>
+                <h2 class='text-center mb-0'>Prediction Result</h2>
+            </div>
+            <div class='card-body'>
+                <div class='row mb-4'>
+                    <div class='col-md-6'>
+                        <div class='card h-100'>
+                            <div class='card-header'>
+                                <h4 class='mb-0'>Prediction Details</h4>
+                            </div>
+                            <div class='card-body'>
+                                <div class='mb-3'>
+                                    <h5 class='text-primary'>Result:</h5>
+                                    <p class='lead'>{{ mri_image.prediction }}</p>
+                                </div>
+                                {% if uncertain %}
+                                    <div class='mb-3'>
+                                        <h5 class='text-primary'>Uncertainty Level:</h5>
+                                        <p class='lead'>{{ uncertainty_message }}</p>
+                                    </div>
+                                    <div class='mb-3'>
+                                        <h5 class='text-primary'>Probability:</h5>
+                                        <p class='lead'>{{ probability }}%</p>
+                                    </div>
+                                {% endif %}
+                                <div class='mb-3'>
+                                    <h5 class='text-primary'>Model Performance:</h5>
+                                    <p class='lead'>Overall Average Success: 95.36%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-md-6'>
+                        <div class='card h-100'>
+                            <div class='card-header'>
+                                <h4 class='mb-0'>Input MRI Image</h4>
+                            </div>
+                            <div class='card-body text-center'>
+                                <img src='{{ result_image }}' alt='Input MRI Image' class='img-fluid rounded'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='card mt-4'>
+                    <div class='card-body'>
+                        <div class='alert alert-warning'>
+                            <h5 class='alert-heading'><i class='fas fa-exclamation-triangle me-2'></i>Important Disclaimer</h5>
+                            <p class='mb-0'>
+                                This prediction is for educational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified health provider with any questions you may have regarding a medical condition.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='text-center mt-4'>
+                    <a href='{% url "upload_image" %}' class='btn btn-primary btn-lg'>
+                        <i class='fas fa-upload me-2'></i>Upload Another Image
+                    </a>
+                </div>
+            </div>
         </div>
-
-        <p class="disclaimer">
-            Disclaimer: This prediction is for educational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified health provider with any questions you may have regarding a medical condition.
-        </p>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
