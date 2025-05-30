@@ -15,7 +15,8 @@ from tensorflow.keras.preprocessing import image
 
 
 # Load the pre-trained model
-model = load_model('bestmodel.keras')
+model_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'Deep_Learning_Model', 'models', 'bestbestmodel.keras')
+model = load_model(model_path)
 
 def preprocess_image(path):
     """Preprocess a single image for prediction."""

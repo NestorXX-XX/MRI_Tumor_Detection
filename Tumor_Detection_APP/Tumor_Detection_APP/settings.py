@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "detection",
     "users",
+    "whitenoise.runserver_nostatic",
 ]
 
 MIDDLEWARE = [
@@ -82,8 +83,12 @@ WSGI_APPLICATION = "Tumor_Detection_APP.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "postgres",
+        "USER": "postgres.wudfrfcrfxysjpoiwllt",
+        "PASSWORD": "BW6pOnB0HCD8Hy0y",
+        "HOST": "aws-0-us-east-2.pooler.supabase.com",
+        "PORT": "6543",
     }
 }
 

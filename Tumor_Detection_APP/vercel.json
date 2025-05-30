@@ -1,19 +1,13 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "Tumor_Detection_APP/wsgi.py",
-            "use": "@vercel/python"
-        }
-    ],
+    "builds": [{
+      "src": "Tumor_Detection_APP/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.11.3" }
+    }],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "Tumor_Detection_APP/wsgi.py"
-        }
-    ],
-    "env": {
-        "DJANGO_SETTINGS_MODULE": "Tumor_Detection_APP.settings",
-        "DJANGO_DEBUG": "False"
-    }
-} 
+      {
+        "src": "/(.*)",
+        "dest": "Tumor_Detection_APP/wsgi.py"
+      }
+    ]
+}

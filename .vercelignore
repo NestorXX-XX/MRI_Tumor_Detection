@@ -1,0 +1,35 @@
+# Dataset
+brain-tumor-mri-dataset/
+split_dataset/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+myenv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Deep Learning Model
+Deep_Learning_Model/
+
+# Other
+*.log
+*.sqlite3
+media/ 

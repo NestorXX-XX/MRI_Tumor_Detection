@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Environment variables
+.env
+.venv
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Ignore the .env file
+.env
+
+# Ignore the env folder (if applicable)
+myenv/
+
+Deep_Learning_Model/dataset_check/
+
+Deep_Learning_Model/split_dataset
+
+Deep_Learning_Model/brain-tumor-mri-dataset
+
+split_dataset
+
+brain-tumor-mri-dataset
+
+Deep_Learning_Model/models
+
+Deep_Learning_Model/brute_force_best_model.ipynb
