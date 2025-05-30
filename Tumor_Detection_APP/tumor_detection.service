@@ -1,0 +1,15 @@
+[Unit]
+Description=Tumor Detection Django Application
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP
+Environment="PATH=/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/myenv/bin"
+Environment="DJANGO_SETTINGS_MODULE=Tumor_Detection_APP.settings"
+ExecStart=/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/myenv/bin/gunicorn --config gunicorn_config.py Tumor_Detection_APP.wsgi:application
+Restart=always
+
+[Install]
+WantedBy=multi-user.target 
