@@ -2,11 +2,11 @@ import multiprocessing
 import os
 
 # Server socket
-bind = "127.0.0.1:8002"
+bind = "0.0.0.0:8002"
 backlog = 2048
 
 # Worker processes
-workers = multiprocessing.cpu_count() * 2 + 1
+workers = 2
 worker_class = 'sync'
 worker_connections = 1000
 timeout = 30
@@ -33,4 +33,13 @@ keyfile = None
 certfile = None
 
 # Django settings
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Tumor_Detection_APP.settings') 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Tumor_Detection_APP.settings')
+
+# Preload app
+preload_app = True
+
+# Capture output
+capture_output = True
+
+# Enable stdio inheritance
+enable_stdio_inheritance = True 
