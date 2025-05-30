@@ -45,15 +45,6 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Dataset and model files
-Deep_Learning_Model/dataset_check/
-Deep_Learning_Model/split_dataset
-Deep_Learning_Model/brain-tumor-mri-dataset
-split_dataset
-brain-tumor-mri-dataset
-Deep_Learning_Model/models
-Deep_Learning_Model/brute_force_best_model.ipynb
-
 # Git
 .git/
 .gitignore
