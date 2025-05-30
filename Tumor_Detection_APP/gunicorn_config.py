@@ -42,4 +42,17 @@ preload_app = True
 capture_output = True
 
 # Enable stdio inheritance
-enable_stdio_inheritance = True 
+enable_stdio_inheritance = True
+
+# Worker timeout
+graceful_timeout = 30
+
+# Max requests
+max_requests = 1000
+max_requests_jitter = 50
+
+# Server name
+server_name = 'tumor_detection_app'
+
+# Forwarded allow ips
+forwarded_allow_ips = '*' 
