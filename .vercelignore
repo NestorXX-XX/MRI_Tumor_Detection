@@ -1,14 +1,37 @@
-# Dataset
-brain-tumor-mri-dataset/
-split_dataset/
-
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-myenv/
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Environment variables
+.env
+.venv
 venv/
 ENV/
 
@@ -22,14 +45,18 @@ ENV/
 .DS_Store
 Thumbs.db
 
+# Dataset and model files
+Deep_Learning_Model/dataset_check/
+Deep_Learning_Model/split_dataset
+Deep_Learning_Model/brain-tumor-mri-dataset
+split_dataset
+brain-tumor-mri-dataset
+Deep_Learning_Model/models
+Deep_Learning_Model/brute_force_best_model.ipynb
+
 # Git
 .git/
 .gitignore
 
-# Deep Learning Model
-Deep_Learning_Model/
-
 # Other
-*.log
-*.sqlite3
-media/ 
+*.sqlite3 

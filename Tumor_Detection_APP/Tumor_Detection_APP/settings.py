@@ -10,10 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 from dotenv import load_dotenv
-import sys
+import dj_database_url
+
+# Load environment variables
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,7 +31,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-your-secret-key-her
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']  # Update this with your Vercel domain
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,12 +45,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "detection",
     "users",
-    "whitenoise.runserver_nostatic",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # Add whitenoise middleware
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -82,14 +83,10 @@ WSGI_APPLICATION = "Tumor_Detection_APP.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres.wudfrfcrfxysjpoiwllt",
-        "PASSWORD": "BW6pOnB0HCD8Hy0y",
-        "HOST": "aws-0-us-east-2.pooler.supabase.com",
-        "PORT": "6543",
-    }
+    "default": dj_database_url.config(
+        default=os.getenv('DATABASE_URL', 'postgresql://postgres.wudfrfcrfxysjpoiwllt:BW6pOnB0HCD8Hy0y@aws-0-us-east-2.pooler.supabase.com:6543/postgres'),
+        conn_max_age=600
+    )
 }
 
 
@@ -129,7 +126,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
@@ -142,47 +141,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_HSTS_SECONDS = 31536000  # 1 year
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
-if 'test' in sys.argv:
-    SECURE_SSL_REDIRECT = False
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.getenv('EMAIL')
-EMAIL_HOST_PASSWORD = os.getenv('PASSWORD')
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-# Vercel deployment settings
-ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://*.vercel.app']
-
-# Login/Logout URLs
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'login'
-LOGIN_URL = 'login'
-
-# Static files configuration for Vercel
-STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# Media files configuration
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
 # Security settings
-SECURE_SSL_REDIRECT = not DEBUG
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY'
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+# Login URLs
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'

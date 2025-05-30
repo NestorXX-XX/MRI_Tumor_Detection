@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "Tumor_Detection_APP/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.9"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "Tumor_Detection_APP/wsgi.py"
+    }
+  ],
+  "env": {
+    "PYTHONPATH": "Tumor_Detection_APP",
+    "DJANGO_SETTINGS_MODULE": "Tumor_Detection_APP.settings",
+    "DEBUG": "False",
+    "DJANGO_SECRET_KEY": "your-secret-key-here",
+    "DATABASE_URL": "postgresql://postgres.wudfrfcrfxysjpoiwllt:BW6pOnB0HCD8Hy0y@aws-0-us-east-2.pooler.supabase.com:6543/postgres"
+  }
+} 
