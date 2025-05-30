@@ -9,11 +9,8 @@ WorkingDirectory=/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP
 Environment="PATH=/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/myenv/bin"
 Environment="DJANGO_SETTINGS_MODULE=Tumor_Detection_APP.settings"
 Environment="PYTHONPATH=/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP"
-Environment="DJANGO_DEBUG=True"
-ExecStart=/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/myenv/bin/gunicorn --config gunicorn_config.py Tumor_Detection_APP.wsgi:application --log-level debug
+ExecStart=/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/myenv/bin/gunicorn --config gunicorn_config.py Tumor_Detection_APP.wsgi:application
 Restart=always
-StandardOutput=append:/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/logs/gunicorn.log
-StandardError=append:/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/logs/gunicorn-error.log
 
 [Install]
 WantedBy=multi-user.target 

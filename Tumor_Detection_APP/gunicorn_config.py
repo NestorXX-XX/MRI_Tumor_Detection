@@ -34,6 +34,7 @@ certfile = None
 
 # Django settings
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Tumor_Detection_APP.settings')
+os.environ.setdefault('PYTHONPATH', '/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP')
 
 # Preload app
 preload_app = True
@@ -55,4 +56,7 @@ max_requests_jitter = 50
 server_name = 'tumor_detection_app'
 
 # Forwarded allow ips
-forwarded_allow_ips = '*' 
+forwarded_allow_ips = '*'
+
+# Chdir
+chdir = '/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP' 
