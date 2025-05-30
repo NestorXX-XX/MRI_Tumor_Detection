@@ -2,7 +2,7 @@ import multiprocessing
 import os
 
 # Server socket
-bind = "0.0.0.0:8002"
+bind = "127.0.0.1:8002"
 backlog = 2048
 
 # Worker processes
@@ -15,13 +15,13 @@ keepalive = 2
 # Logging
 accesslog = '/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/logs/access.log'
 errorlog = '/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/logs/error.log'
-loglevel = 'info'
+loglevel = 'debug'
 
 # Process naming
 proc_name = 'tumor_detection_app'
 
 # Server mechanics
-daemon = True
+daemon = False
 pidfile = '/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/logs/tumor_detection_app.pid'
 umask = 0
 user = None
