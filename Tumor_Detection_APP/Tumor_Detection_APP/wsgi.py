@@ -14,4 +14,5 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Tumor_Detection_APP.settings')
 
 application = get_wsgi_application()
 
+# This is needed for Vercel
 app = application
