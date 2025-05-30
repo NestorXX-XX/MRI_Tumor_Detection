@@ -3,8 +3,8 @@ Description=Tumor Detection Django Application
 After=network.target
 
 [Service]
-User=www-data
-Group=www-data
+User=nestor
+Group=nestor
 WorkingDirectory=/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP
 Environment="PATH=/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/myenv/bin"
 Environment="DJANGO_SETTINGS_MODULE=Tumor_Detection_APP.settings"

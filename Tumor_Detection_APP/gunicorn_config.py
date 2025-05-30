@@ -13,8 +13,8 @@ timeout = 30
 keepalive = 2
 
 # Logging
-accesslog = '/var/log/gunicorn/access.log'
-errorlog = '/var/log/gunicorn/error.log'
+accesslog = '/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/logs/access.log'
+errorlog = '/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/logs/error.log'
 loglevel = 'info'
 
 # Process naming
@@ -22,7 +22,7 @@ proc_name = 'tumor_detection_app'
 
 # Server mechanics
 daemon = True
-pidfile = '/var/run/gunicorn/tumor_detection_app.pid'
+pidfile = '/home/nestor/MRI_Tumor_Detection/Tumor_Detection_APP/logs/tumor_detection_app.pid'
 umask = 0
 user = None
 group = None
