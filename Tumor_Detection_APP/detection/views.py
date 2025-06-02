@@ -70,7 +70,9 @@ def upload_image(request):
     if request.method == 'POST':
         form = MRIImageForm(request.POST, request.FILES)
         if form.is_valid():
-            mri_image = form.save()  # Save uploaded image
+            mri_image = form.save(commit=False)  # Don't save to database yet
+            mri_image.user = request.user  # Add the user
+            mri_image.save()  # Now save to database
             # Predict tumor
             prediction, confidence = predict_tumor(mri_image.image.path)
             mri_image.prediction = prediction
